@@ -224,7 +224,7 @@ class Timing implements Runnable {
 
     public volatile boolean stopFlag = false;
     int finalMarks;
-    int time = 10;
+    int time = 20;
     JFrame frame;
     JLabel timerLabel;
 
