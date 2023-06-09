@@ -266,12 +266,12 @@ class Timing implements Runnable {
                 time--;
 
                 try {
-                    Thread.sleep(1000); // Sleep for 1 second
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            frame.dispose(); // Close the timer window
+            frame.dispose();
 
             if (!stopFlag) {
 
@@ -287,8 +287,7 @@ class Timing implements Runnable {
         });
 
         timerThread.start();
-
-        // Wait for the timer thread to finish
+        
         try {
             timerThread.join();
         } catch (InterruptedException e) {
