@@ -89,6 +89,8 @@ public class OnlineExam {
 
     static String user;
     static String pwd;
+    static String newUser;
+    static String newPwd;
     int i = 5;
     static ArrayList<String> questions = new ArrayList<String>();
     static ArrayList<String> answers = new ArrayList<String>();
@@ -111,7 +113,12 @@ public class OnlineExam {
     }
 
     public static void update(){
-
+       System.out.println("Enter new username: ");
+       newUser=sc.next();
+       System.out.println("Enter new password ");
+       newPwd=sc.next();
+       menu();
+      
     }
     public void calMarks() {
         OnlineExam.marks = 0;
@@ -132,7 +139,8 @@ public class OnlineExam {
         System.out.println("------------");
 
         System.out.println("1. Start Examination");
-        System.out.println("2. Logout");
+        System.out.println("2. Update login details");
+        System.out.println("3. Logout");
         Scanner sc = new Scanner(System.in);
         System.out.println();
         System.out.print("Enter choice: ");
@@ -142,14 +150,17 @@ public class OnlineExam {
         switch (option) {
             case 1:
 
-                Timer timer = new Timer(); // Create a Timer object
+                Timer timer = new Timer(); 
                 timer.schedule(new PreExam(), 200, 1000); 
 
                 Schedule objSchedule = new Schedule();
                 objSchedule.scheduleTask();
                 break;
-                
             case 2:
+                update();
+                break;
+                
+            case 3:
                 return;
             default:
                 System.out.println("Incorrect choice!");
@@ -193,8 +204,7 @@ public class OnlineExam {
             System.out.println();
             System.out.println("Welcome!");
             System.out.println("1. Login");
-            System.out.println("2. Update Profile & Password");
-            System.out.println("3. Exit");
+            System.out.println("2. Exit");
             System.out.println();
             Scanner scan = new Scanner(System.in);
             System.out.print("Enter choice: ");
@@ -205,9 +215,6 @@ public class OnlineExam {
                     login();
                     break;
                 case 2:
-                    update();
-                    break;
-                case 3:
                     System.exit(0);
                     break;
                 default:
@@ -266,12 +273,12 @@ class Timing implements Runnable {
                 time--;
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(1000); 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            frame.dispose();
+            frame.dispose(); 
 
             if (!stopFlag) {
 
@@ -287,7 +294,7 @@ class Timing implements Runnable {
         });
 
         timerThread.start();
-        
+
         try {
             timerThread.join();
         } catch (InterruptedException e) {
@@ -296,4 +303,3 @@ class Timing implements Runnable {
 
     }
 }
-
